@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Table Example</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+	<section class="banner d-flex justify-content-center align-items-center">
+		<div class="text-center"   style="background-color: rgb(244, 238, 238); padding: 30px; margin-top:20px">
+			<h1>Items</h1>
+			
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Problem Name</th>
+                    <th>Action</th>
+                    <th>Difficulty</th>
+                    <th>Done</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pro : ${problem}">
+                    <td th:text="${pro.id}"></td>
+                    <td th:text="${pro.problemName}"></td>
+                    <td>
+    
+                  <a th:href="${pro.link}" target="_blank" class="btn btn-primary btn-sml"> link</a>
+                  <a th:href="@{/update/{id}(id=${pro.id})}" class="btn btn-warning btn-sml">Update</a>
+
+                  <a th:href="@{/delete/{id}(id=${pro.id})}" class="btn btn-danger btn-sml">Delete</a>
+                    </td>
+
+                    <td th:text="${pro.difficulty}"></td>
+                    
+                    
+                </tr>
+            </tbody>
+        </table>
+        <div class="container text-center mt-3">
+        <a th:href="@{/form}" class="btn btn-success">Add Problem</a>
+
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
