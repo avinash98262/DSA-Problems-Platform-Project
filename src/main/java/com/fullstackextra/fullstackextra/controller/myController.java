@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fullstackextra.fullstackextra.Service.service;
 import com.fullstackextra.fullstackextra.entities.Problem;
@@ -36,6 +37,8 @@ public class myController {
 		return "home";
 		
 	}
+	
+	
 	
 	@RequestMapping("/form")
 	public String addingProblem() {
